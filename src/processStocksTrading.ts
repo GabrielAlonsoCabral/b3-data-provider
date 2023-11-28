@@ -31,7 +31,7 @@ rl.on('line', async (line) => {
   trades.push(trade)
   pendingToExecute++
 
-  if(pendingToExecute===300){
+  if(pendingToExecute===1000){
     rl.pause()
     console.log("WRITING TRADES CHUNK!")
     await writeTradeRegister(trades)
