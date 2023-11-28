@@ -28,3 +28,28 @@ model StocksTrading {
 
   @@unique([identifierTradeCode, tradeTime, buyerCode, sellerCode, code,date, price, amount])
 }
+
+model HistoricalSeries {
+  id String @unique @default(uuid())
+  marketDate DateTime @db.Date
+  registerType Int
+  bdiCode String
+  stockCode String @db.VarChar(55)
+  marketType Int
+  companyNameResume String @db.VarChar(255)
+  stockSpecification  String @db.VarChar(100)
+  currency    String @db.VarChar(16)
+  openingValue  Int
+  closeValue Int
+  maximalValue  Int
+  minimalValue  Int
+  averageValue  Int
+  bestBuyOfferValue Int
+  bestSaleOfferValue Int
+  tradesCount  Int
+  stockTradesTotalCount BigInt
+  volume BigInt
+  stocksFactor Int
+  isinCode  String  @db.VarChar(100) 
+  stocksSharingNumber Int
+}
