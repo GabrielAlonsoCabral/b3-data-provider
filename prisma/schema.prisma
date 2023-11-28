@@ -1,0 +1,30 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+
+model StocksTrading {
+  id String @unique @default(uuid())
+  date DateTime @db.Date
+  code String @db.VarChar(55)
+  stockUpdated Int? @default(0)
+  price  Int
+  amount Int 
+  identifierTradeCode String @db.VarChar(255)
+  tradeTime DateTime @db.Date
+  buyerCode  Int
+  sellerCode Int
+
+  @@index([code])
+  @@index([code, date])  
+
+  @@unique([identifierTradeCode, tradeTime, buyerCode, sellerCode, code,date, price, amount])
+}
