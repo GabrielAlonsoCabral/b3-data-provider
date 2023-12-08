@@ -52,4 +52,10 @@ model HistoricalSeries {
   stocksFactor Int
   isinCode  String  @db.VarChar(100) 
   stocksSharingNumber Int
+
+  @@index([stockCode])
+  @@index([marketDate])
+  @@index([stockCode,marketDate])
+
+  @@unique([stockCode, marketDate, marketType, bdiCode, companyNameResume, stockSpecification, currency, stocksFactor, isinCode, stocksSharingNumber])
 }

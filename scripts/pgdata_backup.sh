@@ -14,6 +14,8 @@ docker exec -i $POSTGRES_CONTAINER_NAME /bin/bash -c "PGPASSWORD=$POSTGRES_PASSW
 echo "INFO: DUMP $DUMP_NAME.sql generated. \n"
 
 echo "INFO: UPLOADING DUMP TO S3 $DUMP_NAME.sql ...\n"
-aws s3 mv "$DUMP_NAME".sql s3://$AWS_BUCKET_NAME/pgdata_dumpies/$DUMP_NAME.sql > ./.logs/$DUMP_NAME.txt
+zip $DUMP_NAME.zip $DUMP_NAME.sql
+rm -rf $DUMP_NAME.sql
+aws s3 mv "$DUMP_NAME".zip s3://$AWS_BUCKET_NAME/pgdata_dumpies/$DUMP_NAME.zip > ./.logs/$DUMP_NAME.txt
 echo "INFO:  LOGS CREATED ON $PWD/.logs/$DUMP_NAME.txt"
 echo "INFO:  BACKUP FINISHED!\n"

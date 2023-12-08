@@ -11,16 +11,16 @@ type IRow = Omit<HistoricalSeries,'id'>
 let rowsToExecute:IRow[] = []
 
 let pendingRowsToExecute:number =0
-const CHUNK_SIZE=1000
+const CHUNK_SIZE=100
 
 const FILES_TO_PROCESS_PATH=join(__dirname, '..','files','historical-series')
 const PROCESSED_FILES_PATH=join(__dirname, '..','files','processed')
 
-const FILENAME="_COTAHIST_A2023.csv"
+const FILENAME="_COTAHIST_A2021.csv"
 const FILEPATH =join(FILES_TO_PROCESS_PATH,FILENAME)
 
 async function processPendingRows(rows:IRow[]){
-    console.log("@processHistoricalSeries","processPendingRows", rows.length)
+    //console.log("@processHistoricalSeries","processPendingRows", rows.length)
     return await prismaClient.historicalSeries.createMany({
         skipDuplicates:true,
         data:rows
@@ -34,7 +34,7 @@ pipe.on('data',async (data)=>{
     pendingRowsToExecute++
     rowsToExecute.push(formatCsvItem(data))
 
-    if(pendingRowsToExecute===CHUNK_SIZE){
+    if(pendingRowsToExecute>=CHUNK_SIZE){
         pipe.pause()
         await processPendingRows(rowsToExecute)
         pendingRowsToExecute=0
@@ -42,6 +42,8 @@ pipe.on('data',async (data)=>{
         pipe.resume()
      }
 })
+//.on("pause",()=>{console.log("PAUSED")})
+//.on("resume",()=>{console.log("RESUMED")})
 .on('end',async()=>{
     if(rowsToExecute.length){
         await processPendingRows(rowsToExecute)

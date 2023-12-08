@@ -7,6 +7,8 @@ pgdata/
 *error.log
 
 files/processed/*
+files/historical-series/*
+!files/historical-series/_example.csv
 !files/processed/.gitkeep
 DUMP_*.sql
 
