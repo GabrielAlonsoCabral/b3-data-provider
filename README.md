@@ -1,7 +1,6 @@
 # TypeScript Stock Market Data Processing Repository
 
   Developed by: <a href="https://www.github.com/gabrielAlonsoCabral">@GabrielAlonsoCabral</a>  
-  <br/>
 
 This repository contains a TypeScript project designed for processing large CSV files with stock market data in streaming, performing backups using AWS S3 bucket, Docker dump, and providing utility queries for stock markets. The system is also capable of storing big data related to the stock market.
 
