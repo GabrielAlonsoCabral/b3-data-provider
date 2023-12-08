@@ -5,3 +5,6 @@ files/**/**/*.txt
 files/**/**/*.TXT
 pgdata/
 *error.log
+
+files/processed/*
+!files/processed/.gitkeep

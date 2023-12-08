@@ -19,3 +19,22 @@ select
 from "StocksTrading" st 
 group by "code","date"
 order by "trades_count" desc
+
+
+-- CREATE STOCKS CODE SUMMARY MATERIALIZED VIEW
+CREATE MATERIALIZED VIEW MtVwStocksCodeSummary as (
+	select 
+	"stockCode",
+	max("openingValue") as "maximalOpeningValue",
+	avg("openingValue") as "averageOpeningValue",
+	max("closeValue") as "maximalCloseValue",
+	max("maximalValue") as "maximalMaximalValue",
+	min("minimalValue") as "minimalMinimalValue",
+	avg("volume") as "averageVolume"
+	FROM "HistoricalSeries" hs
+	group by hs."stockCode" 
+)
+refresh materialized view MtVwStocksCodeSummary
+
+select * from MtVwStocksCodeSummary scs
+where scs."stockCode" = 'GOAU4'

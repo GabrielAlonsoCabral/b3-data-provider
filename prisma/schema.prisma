@@ -39,13 +39,13 @@ model HistoricalSeries {
   companyNameResume String @db.VarChar(255)
   stockSpecification  String @db.VarChar(100)
   currency    String @db.VarChar(16)
-  openingValue  Int
-  closeValue Int
-  maximalValue  Int
-  minimalValue  Int
-  averageValue  Int
-  bestBuyOfferValue Int
-  bestSaleOfferValue Int
+  openingValue  Float
+  closeValue Float
+  maximalValue  Float
+  minimalValue  Float
+  averageValue  Float
+  bestBuyOfferValue Float
+  bestSaleOfferValue Float
   tradesCount  Int
   stockTradesTotalCount BigInt
   volume BigInt

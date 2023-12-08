@@ -1,0 +1,23 @@
+export interface ICsvLine {
+    REGISTER_TYPE: string,
+    MARKET_DATE: string,
+    BDI_CODE: string,
+    STOCKS_LETTER_CODE: string,
+    MARKET_TYPE: string,
+    COMPANY_NAME_RESUME: string,
+    STOCK_SPECIFICATION: string,
+    CURRENCY_REFERENCE: string,
+    OPENING_VALUE: string,
+    MAX_VALUE: string,
+    MIN_VALUE: string,
+    AVERAGE_VALUE: string,
+    LAST_OFFER_VALUE: string,
+    BEST_BUY_OFFER: string,
+    BEST_SALE_OFFER: string,
+    TRADES_COUNT: string,
+    STOCKS_TRADES_TOTAL_COUNT: string,
+    VOLUME: string,
+    STOCKS_FACTOR: string,
+    ISIN_CODE: string,
+    STOCKS_SHARING_NUMBER: string
+}
