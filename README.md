@@ -1,4 +1,4 @@
-# TypeScript Stock Market Data Processing Repository
+# Stock Market Data Processing
 
   Developed by: <a href="https://www.github.com/gabrielAlonsoCabral">@GabrielAlonsoCabral</a>  
 
