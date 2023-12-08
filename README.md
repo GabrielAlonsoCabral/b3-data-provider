@@ -1,4 +1,4 @@
-# TypeScript Stock Market Data Processing Repository
+# Stock Market Data Processing
 
   Developed by: <a href="https://www.github.com/gabrielAlonsoCabral">@GabrielAlonsoCabral</a>  
 
@@ -28,6 +28,6 @@ This repository contains a TypeScript project designed for processing large CSV 
 - AWS S3 credentials for backup to S3.
 
 
-# refs
-Get Inputs for src/processStocksTrading.ts
+# datasets references
+https://www.b3.com.br/pt_br/market-data-e-indices/servicos-de-dados/market-data/historico/mercado-a-vista/cotacoes-historicas/
 https://www.b3.com.br/pt_br/market-data-e-indices/servicos-de-dados/market-data/cotacoes/cotacoes/
