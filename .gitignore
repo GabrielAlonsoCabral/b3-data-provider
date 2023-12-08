@@ -8,3 +8,7 @@ pgdata/
 
 files/processed/*
 !files/processed/.gitkeep
+DUMP_*.sql
+
+/.logs/*
+!/.logs/.gitkeep
