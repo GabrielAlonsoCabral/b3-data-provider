@@ -22,7 +22,7 @@ export const environment:IEnvironment = {
     stage:String(process.env.STAGE) as Stage,
     tasks:{
         historicalSeries:{
-            cron:String(process.env.CRON_HISTORICAL_SERIES),
+            cron:String(process.env.CRON_HISTORICAL_SERIES)||'*/5 * * * *',
             bucketPrefix:String(process.env.BUCKET_PREFIX_HISTORICAL_SERIES)
         }
     },

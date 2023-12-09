@@ -4,8 +4,16 @@ import environment from './configs/environment';
 import { processHistoricalSeries } from "./services/processHistoricalSeries";
 import { StorageService } from "./services/storageService";
 
-async function startProcessHistoricalSeries(){
+let isProcessing=false;
+
+async function taskProcessHistoricalSeries(){    
     console.log("Starting process historical series...")    
+    if(isProcessing) {
+        console.log("Skipping... is already running.")
+        return
+    }
+    isProcessing=true;
+
     const storageService = new StorageService()
     const contents = await storageService.listObjects({prefix:`${environment.tasks.historicalSeries.bucketPrefix}/pending`})
     const filteredFiles = contents.filter(file=>extname(String(file.Key))===".csv")
@@ -31,6 +39,8 @@ async function startProcessHistoricalSeries(){
         })        
 
     }
+
+    isProcessing=false
 }
 
-schedule(environment.tasks.historicalSeries.cron,startProcessHistoricalSeries)
+schedule(environment.tasks.historicalSeries.cron,taskProcessHistoricalSeries)
