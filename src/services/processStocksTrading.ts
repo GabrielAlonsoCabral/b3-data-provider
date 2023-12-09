@@ -1,10 +1,10 @@
-import * as fs from 'fs';
-import * as readline from 'readline';
-import {join} from 'path'
-import { ITrade } from './helpers';
-import { parseLine } from './helpers/parseLine';
-import prismaClient from './client/prismaClient';
 import dayjs from 'dayjs';
+import * as fs from 'fs';
+import { join } from 'path';
+import * as readline from 'readline';
+import prismaClient from '../client/prismaClient';
+import { ITrade } from '../helpers';
+import { parseLine } from '../helpers/parseLine';
 const csvFilePath =  join(process.cwd(), 'files','27-11-2023_NEGOCIOSAVISTA.txt')
 
 const fileStream = fs.createReadStream(csvFilePath);
