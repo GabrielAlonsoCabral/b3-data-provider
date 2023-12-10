@@ -59,3 +59,25 @@ model HistoricalSeries {
 
   @@unique([stockCode, marketDate, marketType, bdiCode, companyNameResume, stockSpecification, currency, stocksFactor, isinCode, stocksSharingNumber])
 }
+
+model Tasks {
+    id String @unique @default(uuid())
+
+    type  TaskType
+
+    sourceKey String
+    destinationKey String?
+
+    startDate DateTime  @db.Timestamp() @default(now())
+    closeDate DateTime?  @db.Timestamp()
+
+    processed Boolean
+
+    errorMessage String?
+
+    inProgress  Boolean       
+}
+
+enum TaskType {
+  historicalSeries
+}
