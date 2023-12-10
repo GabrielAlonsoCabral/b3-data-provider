@@ -65,7 +65,6 @@ export async function processHistoricalSeries({filepath, storageService, destina
 }
 
 async function processPendingRows(rows:IRow[]){
-    if(1==1)return true
     return await prismaClient.historicalSeries.createMany({
         skipDuplicates:true,
         data:rows
